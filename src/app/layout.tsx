@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import {
-	SignInButton,
-	SignUpButton,
-	SignedIn,
-	SignedOut,
-	UserButton,
-} from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ThemeProvider } from "../providers/theme-provider";
 import ClerkProvider from "../providers/clerk-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "@unocss/reset/tailwind.css";
+
+import { SignInButton, SignUpButton } from "./components";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
