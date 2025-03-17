@@ -50,7 +50,3 @@ Objectives:
 - Any decisions you want to explain your "why" to?
 - Ideas of how you could have done better (ie. more resources, time, etc.)
 - No need to walk through code
-
-## Document my journey ongoing comments
-
-- Quick start guide means getting off the ground is quick & easy
