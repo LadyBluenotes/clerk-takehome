@@ -3,12 +3,14 @@ import { neobrutalism } from "@clerk/themes";
 
 export default function Page() {
 	return (
-		<div>
-			<h1>Sign In</h1>
+		<div className="flex flex-col justify-center items-center">
 			<SignIn
 				appearance={{
 					baseTheme: neobrutalism,
-					variables: {},
+					variables: {
+						colorPrimary: "#c8ff1d",
+						colorTextOnPrimaryBackground: "#000",
+					},
 				}}
 				forceRedirectUrl={"/dashboard"}
 				path="/sign-in"

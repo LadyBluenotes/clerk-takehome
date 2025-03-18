@@ -7,20 +7,92 @@ body {
 	font-family: var(--font-geist-sans);
 }
 
-body {
-	font-family: var(--font-geist-sans);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+:root {
+	--background: #deebd1;
+
+	--main: #c8ff1d;
+	--overlay: rgba(0, 0, 0);
+
+	--bg: #fef2e8;
+	--bw: #fff;
+	--blank: #000;
+	--border: #000;
+	--text: #000;
+	--mtext: #000;
+	--ring: #000;
+	--ring-offset: #fff;
+
+	--border-radius: 6px;
+	--box-shadow-x: 5px;
+	--box-shadow-y: 4px;
+	--reverse-box-shadow-x: -5px;
+	--reverse-box-shadow-y: -4px;
+	--base-font-weight: 500;
+	--heading-font-weight: 800;
+
+	--shadow: var(--box-shadow-x) var(--box-shadow-y) 0px 0px var(--border);
 }
 
-* {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	font-family: inherit;
+.dark {
+	--background: #010101;
+
+	--main: #c8ff1d;
+	--bg: #000;
+	--bw: #212121;
+	--blank: #fff;
+	--border: #541dff;
+	--text: #e6e6e6;
+	--mtext: #000;
+	--ring: #fff;
+	--ring-offset: #000;
+
+	--shadow: var(--box-shadow-x) var(--box-shadow-y) 0px 0px var(--border);
 }
 
-a {
-	color: inherit;
-	text-decoration: none;
+li::marker {
+	content: "▸ ";
+}
+
+.cl-rootBox {
+	@apply w-650px h-full mb-5 self-center;
+}
+
+.cl-cardBox {
+	@apply rounded-base shadow-shadow border-2 border-border bg-main text-mtext w-650px;
+}
+
+.cl-card {
+	@apply p-6;
+}
+
+.cl-headerTitle {
+	@apply leading-none font-heading text-xl;
+}
+
+.cl-formFieldLabelRow {
+	@apply text-sm text-mtext font-base;
+}
+
+.cl-button {
+	@apply ui-button text-base;
+}
+
+.cl-formFieldInput {
+	@apply ui-input shadow-none transition-none! hover:(shadow-none transition-none border-border);
+}
+
+.cl-required div[class^="cl-internal"] {
+	@apply ui-input shadow-none! border-2;
+}
+
+.cl-footer {
+	@apply flex items-center p-0 mt-0 text-white;
+}
+
+.cl-buttonArrowIcon {
+	scale: 1.5;
+}
+
+div[class^="cl-internal"] {
+	@apply bg-none transition-none;
 }
