@@ -33,28 +33,26 @@ export default function Home() {
 	];
 
 	return (
-		<div className="w-screen h-screen">
-			<main className="flex flex-col pt-28 gap-8">
-				<h1 className="text-5xl font-medium self-center">Clerk Take-Home</h1>
-				<span className="text-xl">Current theme: {theme}</span>
-				<div className="flex flex-col gap-4">
-					<p>What I used to build this:</p>
-					<ul className="list-disc list-inside pl-4">
-						{listItems.map((item) => (
-							<li key={item.name}>
-								<a
-									href={item.link}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="ui-link"
-								>
-									{item.name}
-								</a>
-							</li>
-						))}
-					</ul>
-				</div>
-			</main>
+		<div className="flex flex-col pt-20 gap-8">
+			<h1 className="ui-header">Clerk Take-Home</h1>
+			<span className="text-xl">Current theme: {theme}</span>
+			<div className="flex flex-col gap-4">
+				<p>What I used to build this:</p>
+				<ul className="list-disc list-inside pl-4">
+					{listItems.map((item) => (
+						<li key={item.name}>
+							<a
+								href={item.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="ui-link"
+							>
+								{item.name}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
 		</div>
 	);
 }

@@ -1,10 +1,61 @@
 @unocss all;
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+p {
+	text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+}
+
 html,
 body {
 	max-width: 100vw;
-	overflow-x: hidden;
-	font-family: var(--font-geist-sans);
 }
 
 :root {
@@ -19,8 +70,8 @@ body {
 	--border: #000;
 	--text: #000;
 	--mtext: #000;
-	--ring: #000;
-	--ring-offset: #fff;
+	--ring: #ff1dc8;
+	--ring-offset: #fef2e8;
 
 	--border-radius: 6px;
 	--box-shadow-x: 5px;
@@ -43,7 +94,7 @@ body {
 	--border: #541dff;
 	--text: #e6e6e6;
 	--mtext: #000;
-	--ring: #fff;
+	--ring: #ff1dc8;
 	--ring-offset: #000;
 
 	--shadow: var(--box-shadow-x) var(--box-shadow-y) 0px 0px var(--border);
@@ -53,46 +104,40 @@ li::marker {
 	content: "▸ ";
 }
 
-.cl-rootBox {
-	@apply w-650px h-full mb-5 self-center;
+a:focus-visible,
+button:focus-visible {
+	@apply ring-2 ring-offset-6 ring-offset-ringOffset ring-solid ring-ring outline-none;
 }
 
-.cl-cardBox {
-	@apply rounded-base shadow-shadow border-2 border-border bg-main text-mtext w-650px;
+.cl-footer > div[class^="cl-internal"] a,
+.cl-footer > div > div > div > div > p {
+	@apply text-text;
 }
 
-.cl-card {
-	@apply p-6;
-}
-
-.cl-headerTitle {
-	@apply leading-none font-heading text-xl;
-}
-
-.cl-formFieldLabelRow {
-	@apply text-sm text-mtext font-base;
-}
-
-.cl-button {
-	@apply ui-button text-base;
-}
-
-.cl-formFieldInput {
-	@apply ui-input shadow-none transition-none! hover:(shadow-none transition-none border-border);
-}
-
-.cl-required div[class^="cl-internal"] {
-	@apply ui-input shadow-none! border-2;
-}
-
-.cl-footer {
-	@apply flex items-center p-0 mt-0 text-white;
+.cl-footerAction > span {
+	@apply text-text;
 }
 
 .cl-buttonArrowIcon {
 	scale: 1.5;
 }
 
-div[class^="cl-internal"] {
-	@apply bg-none transition-none;
+button[role="menuitem"] {
+	border-bottom: 2px solid #000;
+}
+
+button[role="menuitem"]:hover {
+	@apply bg-black/5;
+}
+
+.dark button[role="menuitem"] {
+	border-bottom: 2px solid #541dff;
+}
+
+.dark button[role="menuitem"]:hover {
+	@apply bg-white/10;
+}
+
+.cl-userButton-root {
+	@apply ui-button px-1;
 }

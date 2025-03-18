@@ -4,24 +4,34 @@ import { useTheme } from "next-themes";
 import { DropdownMenu } from "radix-ui";
 import { useState } from "react";
 
+type Theme = {
+	[key: string]: ThemeObject;
+};
+
+type ThemeObject = {
+	icon: string;
+	name: string;
+	selectFunction: () => void;
+};
+
 export const ThemeDropdown = () => {
 	const [open, setOpen] = useState(false);
 	const { theme, setTheme } = useTheme();
 
-	const themes = {
+	const themes: Theme = {
 		system: {
 			icon: "i-tabler-device-desktop",
-			name: "light",
+			name: "System",
 			selectFunction: () => setTheme("system"),
 		},
 		dark: {
 			icon: "i-tabler-moon-filled",
-			name: "light",
+			name: "Dark",
 			selectFunction: () => setTheme("dark"),
 		},
 		light: {
 			icon: "i-tabler-sun-high-filled",
-			name: "light",
+			name: "Light",
 			selectFunction: () => setTheme("light"),
 		},
 	};
@@ -32,7 +42,7 @@ export const ThemeDropdown = () => {
 			onOpenChange={setOpen}
 		>
 			<DropdownMenu.Trigger className="ui-dropdown-trigger">
-				<div className={`${themes[theme].icon} size-6`} />
+				<div className={`${themes[theme || "system"].icon} size-6`} />
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Portal>
 				<DropdownMenu.Content
@@ -40,24 +50,23 @@ export const ThemeDropdown = () => {
 					align="end"
 					className="ui-dropdown-content"
 				>
-					<DropdownMenu.Item
-						className="ui-dropdown-item"
-						onSelect={themes.system.selectFunction}
-					>
-						System
-					</DropdownMenu.Item>
-					<DropdownMenu.Item
-						className="ui-dropdown-item"
-						onSelect={themes.light.selectFunction}
-					>
-						Light
-					</DropdownMenu.Item>
-					<DropdownMenu.Item
-						className="ui-dropdown-item"
-						onSelect={themes.dark.selectFunction}
-					>
-						Dark
-					</DropdownMenu.Item>
+					{Object.values(themes).map((t, i) => (
+						<>
+							<DropdownMenu.Item
+								key={t.name}
+								className={`ui-dropdown-item ${i + 1 === Object.keys(themes).length ? "mb-1" : ""}`}
+								onSelect={t.selectFunction}
+							>
+								<span>{t.name}</span>
+							</DropdownMenu.Item>
+							{i + 1 === Object.keys(themes).length ? null : (
+								<hr
+									key={i}
+									className="block border-border"
+								/>
+							)}
+						</>
+					))}
 				</DropdownMenu.Content>
 			</DropdownMenu.Portal>
 		</DropdownMenu.Root>

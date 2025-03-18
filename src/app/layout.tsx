@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ThemeProvider } from "../providers/theme-provider";
 import ClerkProvider from "../providers/clerk-provider";
-import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 import "@unocss/reset/tailwind.css";
-
-import { SignInButton, SignUpButton, ThemeDropdown } from "./components";
-
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
-});
+import { Header } from "./components";
 
 export const metadata: Metadata = {
 	title: "Clerk Take-Home",
@@ -30,29 +18,20 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background dark:bg-background`}
-			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					themes={["light", "dark", "system"]}
-					enableSystem
-				>
-					<ClerkProvider>
-						<header className="flex justify-end items-center p-4 gap-4 h-16">
-							<SignedOut>
-								<SignInButton />
-								<SignUpButton />
-							</SignedOut>
-							<SignedIn>
-								<UserButton />
-							</SignedIn>
-							<ThemeDropdown />
-						</header>
-						{children}
-					</ClerkProvider>
-				</ThemeProvider>
+			<body className="antialiased bg-background dark:bg-background font-questrial">
+				<div className="flex flex-col w-full justify-items-center max-w-5xl mx-auto px-2">
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						themes={["light", "dark", "system"]}
+						enableSystem
+					>
+						<ClerkProvider>
+							<Header />
+							<main className="min-w-full max-w-5xl">{children}</main>
+						</ClerkProvider>
+					</ThemeProvider>
+				</div>
 			</body>
 		</html>
 	);

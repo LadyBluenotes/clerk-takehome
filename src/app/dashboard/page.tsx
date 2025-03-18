@@ -14,19 +14,44 @@ export default function SignIn() {
 	});
 
 	return (
-		<div>
-			<h1>Dashboard</h1>
-			<UserButton />
+		<div className="flex flex-col pt-14 gap-4">
+			<h1 className="ui-header">Dashboard</h1>
 			<OrganizationSwitcher />
-			<span>Name: {user?.fullName}</span>
-			<span>Username: {user?.username}</span>
-			<span>
-				Email:{" "}
-				{user?.emailAddresses.map((email) => {
-					return email.emailAddress;
-				})}
-			</span>
-			<span>Session ID: {sessionID}</span>
+			<ul className="text-lg">
+				<li>
+					<span>
+						<strong>Name:</strong> {user?.fullName}
+					</span>
+				</li>
+				<li>
+					<span>
+						<strong>Username:</strong> {user?.username}
+					</span>
+				</li>
+				<li>
+					{user?.emailAddresses.length > 1 ? (
+						<ul>
+							<span className="font-bold">Emails:</span>
+							{user?.emailAddresses.map((email) => {
+								return (
+									<li>
+										<span>{email.emailAddress}</span>
+									</li>
+								);
+							})}
+						</ul>
+					) : (
+						<span>
+							<strong>Email:</strong> {user?.emailAddresses[0].emailAddress}
+						</span>
+					)}
+				</li>
+				<li>
+					<span>
+						<strong>Session ID:</strong> {sessionID}
+					</span>
+				</li>
+			</ul>
 		</div>
 	);
 }

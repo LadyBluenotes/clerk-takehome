@@ -1,4 +1,5 @@
-import { SignInButton, SignUpButton } from "./Buttons";
 import { ThemeDropdown } from "./ThemeDropdown";
+import { Header } from "./Header";
+import { DashboardButton } from "./DashboardButton";
 
-export { ThemeDropdown, SignInButton, SignUpButton };
+export { ThemeDropdown, Header, DashboardButton };
