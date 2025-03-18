@@ -50,23 +50,27 @@ export const ThemeDropdown = () => {
 					align="end"
 					className="ui-dropdown-content"
 				>
-					{Object.values(themes).map((t, i) => (
-						<>
-							<DropdownMenu.Item
-								key={t.name}
-								className={`ui-dropdown-item ${i + 1 === Object.keys(themes).length ? "mb-1" : ""}`}
-								onSelect={t.selectFunction}
+					<ul>
+						{Object.values(themes).map((t, i) => (
+							<li
+								key={i}
+								className="flex flex-col"
 							>
-								<span>{t.name}</span>
-							</DropdownMenu.Item>
-							{i + 1 === Object.keys(themes).length ? null : (
-								<hr
-									key={i}
-									className="block border-border"
-								/>
-							)}
-						</>
-					))}
+								<DropdownMenu.Item
+									className={`ui-dropdown-item my-2`}
+									onSelect={t.selectFunction}
+								>
+									<span>{t.name}</span>
+								</DropdownMenu.Item>
+								{i + 1 === Object.keys(themes).length ? null : (
+									<hr
+										key={i}
+										className="block border-border"
+									/>
+								)}
+							</li>
+						))}
+					</ul>
 				</DropdownMenu.Content>
 			</DropdownMenu.Portal>
 		</DropdownMenu.Root>
