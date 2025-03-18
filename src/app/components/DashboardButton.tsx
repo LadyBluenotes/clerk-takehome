@@ -1,3 +1,10 @@
-export const DashboardButton = () => {
-	return <button className="ui-button">Dashboard</button>;
-};
+export const DashboardButton = () => (
+	<button
+		className="ui-button"
+		onClick={() => {
+			window.location.href = "/dashboard";
+		}}
+	>
+		Dashboard
+	</button>
+);

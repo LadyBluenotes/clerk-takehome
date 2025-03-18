@@ -141,3 +141,19 @@ button[role="menuitem"]:hover {
 .cl-userButton-root {
 	@apply ui-button px-1;
 }
+
+.cl-userPreviewMainIdentifier__personalWorkspace {
+	font-weight: normal;
+}
+
+.cl-organizationSwitcherPopoverActions > div[role="group"] {
+	border-top: 2px solid var(--border);
+}
+
+.cl-organizationSwitcherPopoverActionButton {
+	outline: 2px solid var(--border);
+}
+
+.cl-organizationSwitcherTrigger > .cl-userPreview {
+	color: black;
+}
