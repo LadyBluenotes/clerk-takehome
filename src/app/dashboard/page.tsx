@@ -6,14 +6,19 @@ import { useEffect, useState } from "react";
 
 export default function Dashboard() {
 	const { user, isLoaded } = useUser();
-	const [organizations, setOrganizations] = useState<string[]>([]);
+	const [organizations, setOrganizations] = useState<
+		{ name: string; id: string }[]
+	>([]);
 	const [sessions, setSessions] = useState<string[]>([]);
 
 	useEffect(() => {
 		if (user) {
 			user.getOrganizationMemberships().then((orgs) => {
 				const orgInfo = orgs.data.map((org) => {
-					return org.organization.name;
+					return {
+						name: org.organization.name,
+						id: org.id,
+					};
 				});
 				setOrganizations(orgInfo);
 			});
@@ -73,28 +78,28 @@ export default function Dashboard() {
 						</span>
 					</li>
 					<li key="email">
-						{user?.emailAddresses && user?.emailAddresses.length > 1 ? (
-							<ul>
-								<span className="font-bold">Emails:</span>
-								{user?.emailAddresses.map((email, i) => {
-									return (
-										<li key={"email-" + i}>
-											<span>{email.emailAddress}</span>
-										</li>
-									);
-								})}
-							</ul>
+						{user?.emailAddresses && user?.emailAddresses.length > 0 ? (
+							<>
+								<span className="font-bold">Email(s):</span>
+								<ul className="pl-8">
+									{user?.emailAddresses.map((email, i) => {
+										return (
+											<li key={"email-" + i}>
+												<span>{email.emailAddress}</span>
+											</li>
+										);
+									})}
+								</ul>
+							</>
 						) : (
-							<span>
-								<strong>Email:</strong> {user?.emailAddresses[0].emailAddress}
-							</span>
+							<span>No email associated.</span>
 						)}
 					</li>
 					<li key="sessions">
-						{sessions.length > 1 ? (
-							<div>
+						{sessions.length > 0 ? (
+							<>
 								<span>
-									<strong>Session IDs:</strong>
+									<strong>Session ID(s):</strong>
 								</span>
 								<ul className="pl-8">
 									{sessions.map((session, i) => {
@@ -105,35 +110,29 @@ export default function Dashboard() {
 										);
 									})}
 								</ul>
-							</div>
+							</>
 						) : (
-							<span>
-								<strong>Session ID:</strong> {sessions[0]}
-							</span>
+							<span>No active sessions.</span>
 						)}
 					</li>
 					<li key="orgs">
-						{organizations.length > 1 ? (
+						{organizations.length > 0 ? (
 							<div>
 								<span>
-									<strong>Organizations:</strong>
+									<strong>Organization(s):</strong>
 								</span>
 								<ul className="pl-8">
-									{organizations.map((org, i) => {
+									{organizations.map(({ name, id }, i) => {
 										return (
 											<li key={"org-" + i}>
 												<span>
-													{org} {}
+													{name} - ID: {id}
 												</span>
 											</li>
 										);
 									})}
 								</ul>
 							</div>
-						) : organizations.length === 1 ? (
-							<span>
-								<strong>Organization:</strong> {organizations[0]}
-							</span>
 						) : (
 							<span>You are not part of any organizations.</span>
 						)}

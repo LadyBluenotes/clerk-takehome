@@ -13,19 +13,19 @@
 
 Objectives:
 
-- [ ] App can be styled any way
+- [x] App can be styled any way
 - Include:
-  - [ ] Sign-in page with `<SignIn />`
-  - [ ] Homepage
-  - [ ] Protected page (eg. `/dashboard`)
+  - [x] Sign-in page with `<SignIn />`
+  - [x] Homepage
+  - [x] Protected page (eg. `/dashboard`)
     - Display:
-      - [ ] User's name
-      - [ ] Email
-      - [ ] Session ID
-      - [ ] If they have an `active organization`, should include organization ID and name
+      - [x] User's name
+      - [x] Email
+      - [x] Session ID
+      - [x] If they have an `active organization`, should include organization ID and name
     - Must include:
-      - [ ] `<UserButton />`
-      - [ ] `<OrganizationSwitcher />`
+      - [x] `<UserButton />`
+      - [x] `<OrganizationSwitcher />`
 - [ ] Write a guide
 - [ ] Journey documentation in README.
 
